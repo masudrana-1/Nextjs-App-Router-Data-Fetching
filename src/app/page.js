@@ -1,25 +1,28 @@
 import Products from "@/components/UI/Products";
 
 
-export const getProductData = async()=>{
-  const res = await fetch("http://localhost:5000/watches", {
-    cache: "force-cache"
-  });
-  const data = await res.json();
+// export const getProductData = async()=>{
+//   const res = await fetch("http://localhost:5000/watches", {
+//     cache: "force-cache"
+//   });
+//   const data = await res.json();
 
-  return data;
-}
+//   return data;
+// }
 
 const HomePage = async() => {
 
-  // const res = await fetch("http://localhost:5000/watches", {
-  //   cache: "force-cache"
-  // });
-  // const data = await res.json();
+  const res = await fetch("http://localhost:5000/watches", {
+    cache: "force-cache",
+    next: {
+      revalidate: 5,
+    }
+  });
+  const data = await res.json();
 
   // console.log(data);
 
-  const data = await getProductData();
+  // const data = await getProductData();
 
   return (
     <div>
